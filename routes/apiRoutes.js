@@ -13,6 +13,23 @@ router.get("/workouts", (req, res) => {
 });
 
 // PUT route for api/workouts/ ID
+router.put("/workouts/:id", (req, res) => {
+  Workouts.update(
+    {
+      duration: req.body.duration,
+      reps: req.body.reps,
+      sets: req.body.sets,
+    },
+    { where: { _id: req.params._id } }
+  )
+    .then((updatedExercise) => {
+      res.json(updatedExercise);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json(err);
+    });
+});
 
 // POST route for api/workouts/ creates new workout
 router.post("/workouts", (req, res) => {
