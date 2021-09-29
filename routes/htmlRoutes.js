@@ -1,14 +1,13 @@
 const htmlRoutes = require("express").Router();
 const path = require("path");
 
-// GET Routes for HTML Notes & index page
+// GET Routes for displaying stats and editing the daily exercise page
 htmlRoutes.get("/stats", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/stats.html"));
 });
 
-// catch all is star
-htmlRoutes.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "/index.html"))
-);
+htmlRoutes.get("/exercise", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/exercise.html"));
+});
 
 module.exports = htmlRoutes;

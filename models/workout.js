@@ -11,7 +11,7 @@ const WorkoutSchema = new Schema({
     {
       type: { required: true, type: String },
       name: { required: true, type: String },
-      duration: { required: "Enter duration by minuets", type: Number },
+      duration: { type: Number },
       weight: { type: Number },
       reps: { type: Number },
       sets: { type: Number },

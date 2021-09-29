@@ -13,14 +13,11 @@ router.get("/workouts", (req, res) => {
 });
 
 // PUT route for api/workouts/ ID
-router.put("/workouts/:id", (req, res) => {
-  Workouts.update(
-    {
-      duration: req.body.duration,
-      reps: req.body.reps,
-      sets: req.body.sets,
-    },
-    { where: { _id: req.params._id } }
+router.put("/workouts/:_id", (req, res) => {
+  Workouts.findByIdAndUpdate(
+    req.params._id,
+    { $push: { exercises: req.body } },
+    { new: true }
   )
     .then((updatedExercise) => {
       res.json(updatedExercise);
@@ -32,8 +29,9 @@ router.put("/workouts/:id", (req, res) => {
 });
 
 // POST route for api/workouts/ creates new workout
-router.post("/workouts", (req, res) => {
-  Workouts.create({})
+router.post("/workouts", ({ body }, res) => {
+  console.log(body);
+  Workouts.create(body)
     .then((data) => {
       res.json(data);
     })
@@ -44,7 +42,7 @@ router.post("/workouts", (req, res) => {
 
 // GET by Range route, api/workouts/range get workouts in past 7 days range
 router.get("/workouts/range", (req, res) => {
-  Workouts.find()
+  Workouts.find({})
     .sort({ day: -1 })
     .limit(7)
     .then((data) => {
