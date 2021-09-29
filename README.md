@@ -10,7 +10,7 @@ In this application I created a Node.js command-line application that can be use
 
 This application also includes testing parameters for each employee and will ensure proper information is being inputted into the respective fields.
 
-See Deployed Application: [Note Taker Dashboard](https://gentle-sea-38975.herokuapp.com/)
+See Deployed Application: [Workout Tracker](https://gentle-sea-38975.herokuapp.com/)
 
 <img src="./public/assets/images/App Launch Page.png" alt="Screen grab of the launch page"/>
 
