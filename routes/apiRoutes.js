@@ -36,7 +36,6 @@ router.put("/workouts/:_id", (req, res) => {
 
 // POST route for api/workouts/ creates new workout
 router.post("/workouts", ({ body }, res) => {
-  console.log(body);
   Workouts.create(body)
     .then((EmptyData) => {
       res.json(EmptyData);
@@ -52,7 +51,6 @@ router.post("/workouts", ({ body }, res) => {
 // .limit(7)
 
 router.get("/workouts/range", (req, res) => {
-  console.log(req.body);
   Workouts.aggregate([
     {
       $addFields: {
