@@ -3,9 +3,15 @@ const { Workouts } = require("../models/index.js");
 
 // GET route for api/workouts
 router.get("/workouts", (req, res) => {
-  Workouts.find()
-    .then((data) => {
-      res.json(data);
+  Workouts.aggregate([
+    {
+      $addFields: {
+        totalDuration: { $sum: "$exercises.duration" },
+      },
+    },
+  ])
+    .then((exerciseData) => {
+      res.json(exerciseData);
     })
     .catch((err) => {
       res.json(err);
@@ -32,8 +38,8 @@ router.put("/workouts/:_id", (req, res) => {
 router.post("/workouts", ({ body }, res) => {
   console.log(body);
   Workouts.create(body)
-    .then((data) => {
-      res.json(data);
+    .then((EmptyData) => {
+      res.json(EmptyData);
     })
     .catch((err) => {
       console.error(err);
@@ -41,8 +47,19 @@ router.post("/workouts", ({ body }, res) => {
 });
 
 // GET by Range route, api/workouts/range get workouts in past 7 days range
+// Workouts.find({})
+// .sort({ day: -1 })
+// .limit(7)
+
 router.get("/workouts/range", (req, res) => {
-  Workouts.find({})
+  console.log(req.body);
+  Workouts.aggregate([
+    {
+      $addFields: {
+        totalDuration: { $sum: "$exercises.duration" },
+      },
+    },
+  ])
     .sort({ day: -1 })
     .limit(7)
     .then((data) => {
