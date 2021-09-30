@@ -20,6 +20,6 @@ mongoose.connect(process.env.MONGOURL || "mongodb://localhost/workout", {
   useNewUrlParser: true,
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`App running on port ${PORT}!`);
 });
