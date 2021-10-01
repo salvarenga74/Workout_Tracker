@@ -6,17 +6,15 @@
 
 ## Description
 
-In this application I created a Node.js command-line application that can be used to create a HTML website that displays the basic information of every employee that was entered by the user. The application was built without significant starter code and assumes that the first team member of the work team will be a manager. From there the user will be prompted until all the members of the team has been added.
+In this application I used starter code to create a Workout Tracker by creating a **Mongo** database with a **Mongoose** schema and handle routes with **Express**. This application also uses the MongoDB aggregate function to dynamically add up and return the total duration for each workout.
 
-This application also includes testing parameters for each employee and will ensure proper information is being inputted into the respective fields.
+The Workout Tracker is a deployed application in which the user can view, create, and track different exercises through out their daily workouts. In addition to being able to create, update, and display from the Mongo database, this application uses a MongoDB Atlas connection to create the global deployment.
 
-See Deployed Application: [Workout Tracker](https://gentle-sea-38975.herokuapp.com/)
+See Deployed Application: [Workout Tracker](https://desolate-chamber-19294.herokuapp.com/)
 
-<img src="./public/assets/images/App Launch Page.png" alt="Screen grab of the launch page"/>
+<img src="./public/images/homepage.png" alt="Screen grab of the Homepage page"/>
 
-<img src="./public/assets/images/Notes Page.png" alt="Screen grab of the current notes list"/>
-
-<img src="./public/assets/images/API Endpoint.png" alt="Screen grab of the current notes api end point with unique ID"/>
+<img src="./public/images/statsPage.png" alt="Screen grab of the stats page of my application"/>
 
 <summary>Table of Contents</summary>
   <ol>
@@ -37,9 +35,11 @@ To get started:
 
 ## Usage
 
-To add a note, the user must enter both a title and a message for the note then click the save icon. The user will be able to see a list of all notes on the left hand column and will be able to close inspect upon selecting the note. The user will also be able to delete notes individually by clicking the trash can icon.
+From the Homepage a user will be able to click on the Dashboard to view their stats represented as a line graph of the cumulative duration of all exercises performed each day. Along side the line graph, the user sees a bar graph with the cumulative weight amount of all exercises performed each day for the 7 workouts. Click the Fitness Tracker button to go back to the Homepage at any time.
 
-The user will also be able to see the JSON script of all notes be using the /api/notes extension on the URL browser.
+In the center of the Homepage a user will be able to see the information for the previous exercise entered. The user will also be able to create a new workout or add a new exercise to the current day's workout.
+
+NOTE: after adding or updating a workout, the user must press the complete button to go back to the Homepage without duplication of the exercise. Also only resistance exercises will be taken into account for the Total Weight Bar graph, but all exercise durations will appear in the line graph.
 
 ## License
 
